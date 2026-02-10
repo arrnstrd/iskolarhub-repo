@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Workspace - ScholarHub</title>
+    <link rel="icon" type="image/png" href="brand.png" />
+    <!-- For apple devices -->
+    <link rel="apple-touch-icon" type="image/png" href="brand.png" />
+    <link rel="stylesheet" href="spaces.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Header -->
+      <header class="header">
+       <div class="brand">
+            <span class="brand-icon" aria-hidden="true">
+              <i class="fas fa-book-open"></i>
+            </span>
+            <span class="brand-name">ScholarHub</span>
+          </div>
+        <div class="header-right"></div>
+      </header>
+
+      <div class="sidebar-overlay"></div>
+      <div class="main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="sidebar-header">
+            <i class="fas fa-bookmark sidebar-logo"></i>
+            <span class="sidebar-title">Spaces</span>
+          </div>
+
+          <div class="user-profile-section">
+            <div class="user-profile-card">
+              <i class="fas fa-user-circle profile-icon"></i>
+              <div class="user-details">
+                <h4 class="user-display-name">Johnny</h4>
+                <p class="user-email">johnny@gmail.com</p>
+              </div>
+            </div>
+          </div>
+
+          <nav class="sidebar-nav">
+            <a href="dashb.html" target="_self" class="nav-item">
+              <i class="fas fa-th-large"></i>
+              <span>Dashboard</span>
+            </a>
+
+            <a href="pages.html" target="_self" class="nav-item">
+              <i class="fas fa-sticky-note"></i>
+              <span>Pages</span>
+            </a>
+
+            <a
+              href="spaces-overview.html"
+              target="_self"
+              class="nav-item active"
+            >
+              <i class="fas fa-bookmark"></i>
+              <span>Spaces</span>
+            </a>
+          </nav>
+
+          <button
+            class="logout-btn"
+            type="button"
+            onclick="window.location.href = 'login.html'"
+          >
+            <i class="fas fa-sign-out-alt"></i>
+            Log Out
+          </button>
+        </aside>
+        <!-- Main Content Areass -->
+        <main class="content-area">
+          <!-- Header with Back Button -->
+          <div class="workspace-header">
+            <div class="header-content">
+              <a class="btn btn-back" href="spaces-overview.html">
+                <i class="fas fa-arrow-left"></i>
+                Back
+              </a>
+              <div class="workspace-info">
+                <h1 class="workspace-title" id="workspaceTitle">Mathematics</h1>
+                <p class="workspace-subtitle">Workspace</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats Cards -->
+          <div class="stats-grid">
+            <div class="stat-card stat-files">
+              <div class="stat-content">
+                <div class="stat-info">
+                  <p class="stat-label">Files</p>
+                  <p class="stat-number" id="filesCount">5</p>
+                </div>
+                <i class="fas fa-file stat-icon"></i>
+              </div>
+            </div>
+
+            <div class="stat-card stat-notes">
+              <div class="stat-content">
+                <div class="stat-info">
+                  <p class="stat-label">Notes</p>
+                  <p class="stat-number" id="notesCount">8</p>
+                </div>
+                <i class="fas fa-file-alt stat-icon"></i>
+              </div>
+            </div>
+
+            <div class="stat-card stat-links">
+              <div class="stat-content">
+                <div class="stat-info">
+                  <p class="stat-label">Links</p>
+                  <p class="stat-number" id="linksCount">3</p>
+                </div>
+                <i class="fas fa-link stat-icon"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Tabs -->
+          <div class="card">
+            <div class="card-body">
+              <!-- Tabs Navigation -->
+              <div class="tabs-nav">
+                <button class="tab-btn active" data-tab="files">Files</button>
+                <button class="tab-btn" data-tab="notes">Notes</button>
+                <button class="tab-btn" data-tab="links">Links</button>
+              </div>
+
+              <!-- Files Tab -->
+              <div class="tab-content active" id="files-tab">
+                <div class="tab-header">
+                  <h3 class="tab-title">File Manager</h3>
+                  <button class="btn btn-primary" onclick="openUploadModal()">
+                    <i class="fas fa-upload"></i>
+                    Upload File
+                  </button>
+                </div>
+
+                <div class="files-grid" id="filesList">
+                  <!-- Files will be added here dynamically -->
+                </div>
+
+                <div class="empty-state" id="filesEmpty" style="display: none">
+                  <i class="fas fa-upload empty-icon"></i>
+                  <p>No files uploaded yet</p>
+                </div>
+              </div>
+
+              <!-- Notes Tab -->
+              <div class="tab-content" id="notes-tab">
+                <div class="tab-header">
+                  <h3 class="tab-title">Notes in this Space</h3>
+                  <button class="btn btn-notes" onclick="openNoteModal()">
+                    <i class="fas fa-plus"></i>
+                    Add Note
+                  </button>
+                </div>
+
+                <div class="notes-grid" id="notesList">
+                  <!-- Notes will be added here dynamically -->
+                </div>
+
+                <div class="empty-state" id="notesEmpty" style="display: none">
+                  <i class="fas fa-file-alt empty-icon"></i>
+                  <p>No notes in this space yet</p>
+                </div>
+              </div>
+
+              <!-- Links Tab -->
+              <div class="tab-content" id="links-tab">
+                <div class="tab-header">
+                  <h3 class="tab-title">Saved Links</h3>
+                  <button class="btn btn-links" onclick="openLinkModal()">
+                    <i class="fas fa-plus"></i>
+                    Add Link
+                  </button>
+                </div>
+
+                <div class="links-list" id="linksList">
+                  <!-- Links will be added here dynamically -->
+                </div>
+
+                <div class="empty-state" id="linksEmpty" style="display: none">
+                  <i class="fas fa-link empty-icon"></i>
+                  <p>No links saved yet</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Upload File Modal -->
+    <div class="modal" id="uploadModal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeUploadModal()">&times;</span>
+        <h2>Upload File</h2>
+        <div class="upload-area">
+          <i class="fas fa-upload upload-icon"></i>
+          <p class="upload-text">Click to select or drag and drop</p>
+          <input
+            type="file"
+            id="fileInput"
+            class="file-input"
+            accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png"
+          />
+          <button
+            class="btn btn-primary"
+            onclick="document.getElementById('fileInput').click()"
+          >
+            Select File
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Note Modal -->
+    <div class="modal" id="noteModal">
+      <div class="modal-content modal-large">
+        <span class="close-btn" onclick="closeNoteModal()">&times;</span>
+        <h2 id="noteModalTitle">Add Note to Mathematics</h2>
+        <form id="noteForm">
+          <div class="form-group">
+            <label for="noteTitle">Title</label>
+            <input
+              type="text"
+              id="noteTitle"
+              class="form-input"
+              placeholder="Enter note title"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="noteContent">Content</label>
+            <textarea
+              id="noteContent"
+              class="form-textarea"
+              placeholder="Write your note..."
+              rows="10"
+              required
+            ></textarea>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline"
+              onclick="closeNoteModal()"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-notes">Add Note</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- View Note Modal -->
+    <div class="modal" id="viewNoteModal">
+      <div class="modal-content modal-large">
+        <span class="close-btn" onclick="closeViewNoteModal()">&times;</span>
+        <h2 id="viewNoteTitle">Note Title</h2>
+        <div class="note-view-content">
+          <p id="viewNoteContent"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline" onclick="closeViewNoteModal()">
+            Close
+          </button>
+          <button class="btn btn-notes" onclick="editCurrentNote()">
+            <i class="fas fa-edit"></i>
+            Edit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Link Modal -->
+    <div class="modal" id="linkModal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeLinkModal()">&times;</span>
+        <h2 id="linkModalTitle">Add Link to Mathematics</h2>
+        <form id="linkForm">
+          <div class="form-group">
+            <label for="linkTitle">Title</label>
+            <input
+              type="text"
+              id="linkTitle"
+              class="form-input"
+              placeholder="e.g., Course Website"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="linkUrl">URL</label>
+            <input
+              type="url"
+              id="linkUrl"
+              class="form-input"
+              placeholder="www.example.com"
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline"
+              onclick="closeLinkModal()"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-links">Add Link</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Rename File Modal -->
+    <div class="modal" id="renameModal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeRenameModal()">&times;</span>
+        <h2>Rename File</h2>
+        <form id="renameForm">
+          <div class="form-group">
+            <label for="fileName">File Name</label>
+            <input type="text" id="fileName" class="form-input" required />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline"
+              onclick="closeRenameModal()"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">Rename</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- File Preview Modal -->
+    <div class="modal" id="previewModal">
+      <div class="modal-content modal-large">
+        <span class="close-btn" onclick="closePreviewModal()">&times;</span>
+        <h2 id="previewFileName">File Preview</h2>
+        <div class="preview-content">
+          <div class="preview-icon" id="previewIcon">📄</div>
+          <p class="preview-text">File Preview</p>
+          <p class="preview-info" id="previewType">Type: application/pdf</p>
+          <p class="preview-info" id="previewSize">Size: 2.5 MB</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline" onclick="closePreviewModal()">
+            Close
+          </button>
+          <button class="btn btn-primary" onclick="downloadCurrentFile()">
+            <i class="fas fa-download"></i>
+            Download
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Confirmation Dialog -->
+    <div class="modal" id="deleteDialog">
+      <div class="modal-content modal-small">
+        <h2>Are you sure?</h2>
+        <p class="delete-message">
+          This action cannot be undone. This will permanently delete this
+          <span id="deleteType">item</span>.
+        </p>
+        <div class="modal-footer">
+          <button class="btn btn-outline" onclick="closeDeleteDialog()">
+            Cancel
+          </button>
+          <button class="btn btn-danger" onclick="confirmDelete()">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="mobile-nav.js"></script>
+    <script src="spaces.js"></script>
+  </body>
+</html>

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Spaces - ScholarHub</title>
+    <link rel="icon" type="image/png" href="brand.png" />
+    <!-- For apple devices -->
+    <link rel="apple-touch-icon" type="image/png" href="brand.png" />
+    <link rel="stylesheet" href="spaces-overview.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Header -->
+      <header class="header">
+     <div class="brand">
+            <span class="brand-icon" aria-hidden="true">
+              <i class="fas fa-book-open"></i>
+            </span>
+            <span class="brand-name">ScholarHub</span>
+          </div>s
+        <div class="header-right"></div>
+      </header>
+
+      <div class="sidebar-overlay"></div>
+      <div class="main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="sidebar-header">
+            <i class="fas fa-bookmark sidebar-logo"></i>
+            <span class="sidebar-title">Spaces</span>
+          </div>
+
+          <div class="user-profile-section">
+            <div class="user-profile-card">
+              <i class="fas fa-user-circle profile-icon"></i>
+              <div class="user-details">
+                <h4 class="user-display-name">Johnny</h4>
+                <p class="user-email">johnny@gmail.com</p>
+              </div>
+            </div>
+          </div>
+
+          <nav class="sidebar-nav">
+            <a href="dashb.html" target="_self" class="nav-item">
+              <i class="fas fa-th-large"></i>
+              <span>Dashboard</span>
+            </a>
+
+            <a href="pages.html" target="_self" class="nav-item">
+              <i class="fas fa-sticky-note"></i>
+              <span>Pages</span>
+            </a>
+
+            <a
+              href="spaces-overview.html"
+              target="_self"
+              class="nav-item active"
+            >
+              <i class="fas fa-bookmark"></i>
+              <span>Spaces</span>
+            </a>
+          </nav>
+          <button
+            class="logout-btn"
+            type="button"
+            onclick="window.location.href = 'login.html'"
+          >
+            <i class="fas fa-sign-out-alt"></i>
+            Log Out
+          </button>
+        </aside>
+        <!-- Main Content Area -->
+        <main class="content-area">
+          <!-- Page Header -->
+          <div class="page-header">
+            <div class="header-info">
+              <h1 class="page-title">My Spaces</h1>
+              <p class="page-subtitle">
+                Organize your academic materials by subject or category
+              </p>
+            </div>
+            <button class="btn btn-create" onclick="openAddModal()">
+              <i class="fas fa-plus"></i>
+              Create Space
+            </button>
+          </div>
+
+          <!-- Stats Card -->
+          <div class="stat-card-single">
+            <div class="stat-content">
+              <div class="stat-info">
+                <p class="stat-label">Total Spaces</p>
+                <p class="stat-number" id="totalSpaces">0</p>
+              </div>
+              <div class="stat-icon-wrapper">
+                <i class="fas fa-folder-open stat-icon"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Spaces Grid -->
+          <div class="spaces-grid" id="spacesGrid">
+            <!-- Spaces will be added here dynamically -->
+          </div>
+
+          <!-- Empty State -->
+          <div class="empty-state" id="emptyState" style="display: none">
+            <i class="fas fa-folder-open empty-icon"></i>
+            <p>No spaces yet. Create your first space!</p>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Add Space Modal -->
+    <div class="modal" id="addModal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeAddModal()">&times;</span>
+        <h2>Create New Space</h2>
+        <form id="addForm">
+          <div class="form-group">
+            <label for="spaceName">Space Name</label>
+            <input
+              type="text"
+              id="spaceName"
+              class="form-input"
+              placeholder="e.g., Mathematics, Physics, Chemistry"
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline"
+              onclick="closeAddModal()"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-create">Create Space</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Rename Space Modal -->
+    <div class="modal" id="renameModal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeRenameModal()">&times;</span>
+        <h2>Rename Space</h2>
+        <form id="renameForm">
+          <div class="form-group">
+            <label for="renameSpaceName">Space Name</label>
+            <input
+              type="text"
+              id="renameSpaceName"
+              class="form-input"
+              placeholder="Enter new name"
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline"
+              onclick="closeRenameModal()"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Delete Confirmation Dialog -->
+    <div class="modal" id="deleteDialog">
+      <div class="modal-content modal-small">
+        <h2>Are you sure?</h2>
+        <p class="delete-message">
+          This action cannot be undone. This will permanently delete this space
+          and all its contents (files, notes, and links).
+        </p>
+        <div class="modal-footer">
+          <button class="btn btn-outline" onclick="closeDeleteDialog()">
+            Cancel
+          </button>
+          <button class="btn btn-danger" onclick="confirmDelete()">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="mobile-nav.js"></script>
+    <script src="spaces-overview.js"></script>
+  </body>
+</html>

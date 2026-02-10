@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pages | Scholar Hub</title>
+    <link rel="icon" type="image/png" href="brand.png" />
+    <!-- For apple devices -->
+    <link rel="apple-touch-icon" type="image/png" href="brand.png" />
+    <link rel="stylesheet" href="page.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Header -->
+      <header class="header">
+        <div class="brand">
+            <span class="brand-icon" aria-hidden="true">
+              <i class="fas fa-book-open"></i>
+            </span>
+            <span class="brand-name">ScholarHub</span>
+          </div>
+        <div class="header-right"> </div>
+      </header>
+
+      <div class="sidebar-overlay"></div>
+      <div class="main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="sidebar-header">
+            <i class="fas fa-sticky-note sidebar-logo"></i>
+            <span class="sidebar-title">Pages</span>
+          </div>
+
+          <div class="user-profile-section">
+            <div class="user-profile-card">
+              <i class="fas fa-user-circle profile-icon"></i>
+              <div class="user-details">
+                <h4 class="user-display-name">Johnny</h4>
+                <p class="user-email">johnny@gmail.com</p>
+              </div>
+            </div>
+          </div>
+
+          <nav class="sidebar-nav">
+            <a href="dashb.html" target="_self" class="nav-item">
+              <i class="fas fa-th-large"></i>
+              <span>Dashboard</span>
+            </a>
+
+            <a href="pages.html" target="_self" class="nav-item active">
+              <i class="fas fa-sticky-note"></i>
+              <span>Pages</span>
+            </a>
+
+            <a href="spaces-overview.html" target="_self" class="nav-item">
+              <i class="fas fa-bookmark"></i>
+              <span>Spaces</span>
+            </a>
+          </nav>
+
+          <button
+            class="logout-btn"
+            type="button"
+            onclick="window.location.href = 'login.html'"
+          >
+            <i class="fas fa-sign-out-alt"></i>
+            Log Out
+          </button>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area pages-content">
+          <div class="pages-header">
+            <h2>Pages</h2>
+            <button class="btn btn-create-page" id="createPageBtn">
+              <i class="fas fa-plus"></i> Create Page
+            </button>
+          </div>
+
+          <div class="pages-list" id="pagesList">
+            <!-- Pages will be dynamically added here -->
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Page Editor Modal -->
+    <div class="modal-overlay" id="pageEditorModal">
+      <div class="page-editor-fullscreen">
+        <div class="editor-top-bar">
+          <button class="editor-close-btn" id="closePageBtn">
+            <i class="fas fa-times"></i>
+          </button>
+          <button class="editor-save-btn" id="savePageBtn">
+            <i class="fas fa-save"></i> Save
+          </button>
+        </div>
+
+        <div class="notion-editor">
+          <div class="editor-header">
+            <div class="page-icon" id="pageIcon" contenteditable="false">
+              📄
+            </div>
+            <h1
+              contenteditable="true"
+              class="page-title"
+              id="pageTitle"
+              placeholder="Untitled"
+            ></h1>
+          </div>
+
+          <div
+            contenteditable="true"
+            class="page-content"
+            id="pageContent"
+            placeholder="Type '/' for commands or start writing..."
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="mobile-nav.js"></script>
+    <script src="pages-script.js"></script>
+  </body>
+</html>

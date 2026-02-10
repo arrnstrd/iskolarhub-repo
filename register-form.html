@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScholarHub | Register</title>
+    <link rel="icon" type="image/png" href="sh.jpg" />
+    <!-- For apple devices -->
+    <link rel="apple-touch-icon" type="image/png" href="sh.jpg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="form-container">
+        <img src="brand.png" alt="ScholarHub logo" />
+        <h1>Register</h1>
+        <p>Create your account to get started.</p>
+
+        <form action="#" method="post">
+          <!-- Name -->
+          <div class="input-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <!-- Email -->
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="name@email.com"
+              required
+            />
+          </div>
+
+          <!-- Password -->
+          <div class="input-group">
+            <label for="password">Password</label>
+            <div class="password-field">
+              <input type="password" id="password" name="password" required />
+              <button
+                type="button"
+                class="toggle-password"
+                data-target="password"
+                aria-label="Show password"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z" />
+                  <circle cx="12" cy="12" r="3" />
+                  <path class="eye-slash" d="M3 3l18 18" />
+                </svg>
+              </button>
+            </div>
+            <small
+              >Use at least 15 characters, or 8 characters with letters,
+              numbers, and symbols.</small
+            >
+          </div>
+
+          <div class="form-options">
+            <div class="check-box">
+              <input type="checkbox" name="remember-me" id="remember" />
+              <label for="remember"
+                >Receive email updates and announcements.</label
+              >
+            </div>
+          </div>
+
+          <!-- register button -->
+          <div class="btn">
+            <a href="dashb.html" style="text-decoration: none">
+              <button type="button" name="register-btn">Register</button>
+            </a>
+          </div>
+
+          <!-- login link -->
+          <div class="login-link">
+            <p>Already have an account? <a href="login.html">Log in</a></p>
+          </div>
+
+          <div class="bottom-text">
+            <p>
+              <small>
+                By creating an account, you agree to the
+                <a href="#" style="color: rgb(52, 109, 255)">
+                  Terms of service</a
+                >. For more information about ScholarHub's privacy practices,
+                see the
+                <a href="#" style="color: rgb(52, 109, 255)"
+                  >ScholarHub Privacy Statement</a
+                >
+            
+              </small>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".toggle-password").forEach((btn) => {
+          const targetId = btn.getAttribute("data-target");
+          const input = document.getElementById(targetId);
+          if (!input) return;
+
+          btn.addEventListener("click", () => {
+            const showing = input.type === "text";
+            input.type = showing ? "password" : "text";
+            btn.classList.toggle("is-visible", !showing);
+            btn.setAttribute("aria-label", showing ? "Show password" : "Hide password");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,247 @@
+/* login-form.css */
+
+/* 1. Global Reset & Background */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 16px;
+    background: linear-gradient(135deg, #8aa6c2 0%, #b7c6d5 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: -1;
+}
+
+
+/* 2. The Main Container */
+.main {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 480px;
+    padding: 44px;
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.28);
+    text-align: center;
+    border: 1px solid rgba(231, 237, 243, 0.8);
+    backdrop-filter: blur(6px);
+}
+
+/* 3. Branding & Headers */
+.form-container img {
+    width: 90px; /* Adjust based on your logo shape */
+    margin-bottom: 15px;
+}
+
+.form-container h1 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.form-container p {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+/* 4. Input Groups */
+.input-group {
+    margin-bottom: 1px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.input-group small {
+    display: block;
+    margin-top: 6px;
+    color: #64748b;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1.5px solid #d6ddeb;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.password-field {
+    position: relative;
+}
+
+.password-field input {
+    padding-right: 46px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    border: 1px solid #d6ddeb;
+    border-radius: 50%;
+    background: #fff;
+    color: #334155;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.toggle-password:hover {
+    border-color: #3498db;
+    color: #1f2937;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.toggle-password svg {
+    width: 18px;
+    height: 18px;
+}
+
+.toggle-password .eye-slash {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.toggle-password.is-visible .eye-slash {
+    opacity: 0;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* 5. Remember Me & Forgot Password Flexbox */
+
+.form-container form {
+    display: grid;
+    gap: 12px;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #475569;
+    margin-top: 6px;
+}
+
+.check-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.check-box input {
+    cursor: pointer;
+}
+
+.check-box label {
+    cursor: pointer;
+}
+
+.link-container a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link-container a:hover {
+    text-decoration: underline;
+}
+
+/* 6. Button Styling */
+.btn button {
+    width: 100%;
+    padding: 13px;
+    background-color: #2c3e50; /* Deep scholarly blue/grey */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn button:hover {
+    background-color: #1a252f;
+}
+
+.btn button:focus-visible {
+    outline: 3px solid rgba(44, 62, 80, 0.3);
+    outline-offset: 2px;
+}
+
+/* 7. Register Link */
+.login-link {
+    margin-top: 16px;
+    font-size: 0.95rem;
+    color: #475569;
+}
+
+.login-link a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 520px) {
+    .form-container {
+        padding: 32px 24px;
+        border-radius: 14px;
+    }
+
+    .form-container h1 {
+        font-size: 1.6rem;
+    }
+
+    .form-container p {
+        font-size: 0.9rem;
+    }
+}

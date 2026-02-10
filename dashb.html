@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Scholar Hub</title>
+    <link rel="icon" type="image/png" href="brand.png" />
+    <!-- For apple devices -->
+    <link rel="apple-touch-icon" type="image/png" href="brand.png" />
+
+    <link rel="stylesheet" href="dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="dashboard-container">
+      <!-- Header -->
+      <header class="header">
+        <nav class="nav-tabs">
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="brand">
+            <span class="brand-icon" aria-hidden="true">
+              <i class="fas fa-book-open"></i>
+            </span>
+            <span class="brand-name">ScholarHub</span>
+          </div>
+        </nav>
+        <div class="header-right"></div>
+      </header>
+
+      <div class="sidebar-overlay"></div>
+      <div class="main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="sidebar-header">
+            <i class="fas fa-th-large sidebar-logo"></i>
+            <span class="sidebar-title">Dashboard</span>
+          </div>
+
+          <div class="user-profile-section">
+            <div class="user-profile-card">
+              <i class="fas fa-user-circle profile-icon"></i>
+              <div class="user-details">
+                <h4 class="user-display-name">Johnny</h4>
+                <p class="user-email">johnny@gmail.com</p>
+              </div>
+            </div>
+          </div>
+
+          <nav class="sidebar-nav">
+            <a href="dashb.html" class="nav-item active">
+              <i class="fas fa-th-large"></i>
+              <span>Dashboard</span>
+            </a>
+
+            <a href="pages.html" class="nav-item">
+              <i class="fas fa-sticky-note"></i>
+              <span>Pages</span>
+            </a>
+
+            <a href="spaces-overview.html" class="nav-item">
+              <i class="fas fa-bookmark"></i>
+              <span>Spaces</span>
+            </a>
+          </nav>
+
+          <button
+            class="logout-btn"
+            type="button"
+            onclick="window.location.href = 'login.html'"
+          >
+            <i class="fas fa-sign-out-alt"></i>
+            Log Out
+          </button>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+          <div class="welcome-section">
+            <h2>Welcome to your Dashboard, Johnny!</h2>
+            <p>
+              This is your personal academic workspace where you can manage your
+              tasks, notes, and resources.
+            </p>
+          </div>
+
+          <!-- Task Management Card -->
+          <div class="card task-management-card">
+            <div class="card-header">
+              <h3 class="card-title">Task Management</h3>
+            </div>
+            <div class="card-body">
+              <div class="task-status-boxes">
+                <div class="status-box status-pending">
+                  <span class="status-number" id="pendingCount">2</span>
+                  <span class="status-label">Pending</span>
+                </div>
+                <div class="status-box status-done">
+                  <span class="status-number" id="doneCount">1</span>
+                  <span class="status-label">Done</span>
+                </div>
+                <div class="status-box status-overdue">
+                  <span class="status-number" id="overdueCount">1</span>
+                  <span class="status-label">Overdue</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Row - Three Column Grid -->
+          <div class="bottom-row">
+            <!-- Tasks Section -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Tasks</h3>
+                <button class="btn btn-add" id="addTaskBtn">+ Add Task</button>
+              </div>
+              <div class="card-body">
+                <div class="task-list" id="taskList">
+                  <!-- Tasks will be dynamically added here -->
+                </div>
+                <div class="status-legend">
+                  <span class="legend-item"
+                    ><span class="legend-dot pending"></span> Pending</span
+                  >
+                  <span class="legend-item"
+                    ><span class="legend-dot done"></span> Done</span
+                  >
+                  <span class="legend-item"
+                    ><span class="legend-dot overdue"></span> Overdue</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Notes Section -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Notes</h3>
+                <button class="btn btn-add" id="addNoteBtn">+ Add Note</button>
+              </div>
+              <div class="card-body">
+                <div class="notes-list" id="notesList">
+                  <!-- Notes will be dynamically added here -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Resources Section -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Resources</h3>
+                <button class="btn btn-add" id="addResourceBtn">
+                  + Add Resource
+                </button>
+              </div>
+              <div class="card-body">
+                <div class="resources-list" id="resourcesList">
+                  <!-- Resources will be dynamically added here -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div class="modal" id="taskModal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Add New Task</h2>
+        <form id="taskForm">
+          <div class="form-group">
+            <label for="taskName">Task Name</label>
+            <input type="text" id="taskName" required />
+          </div>
+          <div class="form-group">
+            <label for="taskDueDate">Due Date</label>
+            <input type="date" id="taskDueDate" required />
+          </div>
+          <div class="form-group">
+            <label for="taskSubject">Subject</label>
+            <input type="text" id="taskSubject" />
+          </div>
+          <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add Note Modal -->
+    <div class="modal" id="noteModal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Add New Note</h2>
+        <form id="noteForm">
+          <div class="form-group">
+            <label for="noteTitle">Note Title</label>
+            <input type="text" id="noteTitle" required />
+          </div>
+          <div class="form-group">
+            <label for="noteUrl">URL</label>
+            <input type="url" id="noteUrl" required />
+          </div>
+          <div class="form-group">
+            <label for="noteDate">Date</label>
+            <input type="date" id="noteDate" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Add Note</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add Resource Modal -->
+    <div class="modal" id="resourceModal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Add New Resource</h2>
+        <form id="resourceForm">
+          <div class="form-group">
+            <label for="resourceTitle">Resource Title</label>
+            <input type="text" id="resourceTitle" required />
+          </div>
+          <div class="form-group">
+            <label for="resourceUrl">URL</label>
+            <input type="url" id="resourceUrl" required />
+          </div>
+          <div class="form-group">
+            <label for="resourceDate">Date</label>
+            <input type="date" id="resourceDate" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Add Resource</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="mobile-nav.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
