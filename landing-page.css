@@ -6,13 +6,13 @@
 }
 
 .team-credits {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     color: #94a3b8; /* Light grey para hindi agaw-pansin */
-    margin-top: 10px;
+    margin-top: 7px;
 }
 
 .team-credits span {
-    font-weight: 600;
+    font-weight: 400;
     color: #64748b; /* Slightly darker para sa names */
 }
 
