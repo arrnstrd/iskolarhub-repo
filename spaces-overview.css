@@ -51,6 +51,18 @@ body.nav-open {
     z-index: 100;
 }
 
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 750;
+    color: #2c3e50;
+}
+
+.brand-name {
+    font-size: 22px;
+    letter-spacing: 0.3px;
+}
 .nav-tabs {
     display: flex;
     align-items: center;
