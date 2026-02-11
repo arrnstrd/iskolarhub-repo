@@ -13,6 +13,7 @@
     --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+
 /* Reset & Base Styles */
 * {
     margin: 0;
@@ -750,4 +751,26 @@ body.nav-open {
     .page-content {
         font-size: 1rem;
     }
+}
+
+
+
+
+/* Placeholder styling for title and content */
+.page-title:empty::before {
+    content: "Untitled";
+    color: #ccc;
+    font-weight: 400;
+}
+
+.page-content:empty::before {
+    content: "Start writing...";
+    color: #ccc;
+    font-weight: 400;
+}
+
+/* Remove placeholder when focused */
+.page-title:focus::before,
+.page-content:focus::before {
+    content: "";
 }
