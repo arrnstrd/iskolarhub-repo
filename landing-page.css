@@ -5,6 +5,18 @@
     box-sizing: border-box;
 }
 
+.team-credits {
+    font-size: 0.85rem;
+    color: #94a3b8; /* Light grey para hindi agaw-pansin */
+    margin-top: 10px;
+}
+
+.team-credits span {
+    font-weight: 600;
+    color: #64748b; /* Slightly darker para sa names */
+}
+
+
 :root {
     /* Color Palette from the image */
     --primary-dark: #3d4f5c;
